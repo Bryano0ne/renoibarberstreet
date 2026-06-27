@@ -1,0 +1,66 @@
+{
+  "name": "Renoï Barberstreet",
+  "short_name": "Renoï",
+  "description": "Barbershop urbain premium à Ouagadougou — La valeur sûre. 2 salons : ZAD & SAABA.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["lifestyle", "health", "beauty"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Réserver",
+      "short_name": "Réserver",
+      "description": "Prendre un rendez-vous",
+      "url": "/reserver",
+      "icons": [{ "src": "/icons/shortcut-reserver.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Mon compte",
+      "short_name": "Compte",
+      "description": "Accéder à mon espace client",
+      "url": "/compte",
+      "icons": [{ "src": "/icons/shortcut-compte.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Nos salons",
+      "short_name": "Salons",
+      "description": "Adresses et horaires",
+      "url": "/nos-salons",
+      "icons": [{ "src": "/icons/shortcut-salons.svg", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Accueil Renoï Barberstreet"
+    }
+  ]
+}

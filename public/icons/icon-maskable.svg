@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Fond plein (safe zone = 80% = 204px de rayon) -->
+  <rect width="512" height="512" fill="#0A0A0A"/>
+  <!-- Zone de sécurité = cercle 204px radius (80% de 256) -->
+  <g transform="translate(256,230)" fill="none" stroke="#C9A84C" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="-56" y1="-56" x2="38" y2="38" stroke-width="12"/>
+    <line x1="56" y1="-56" x2="-38" y2="38" stroke-width="12"/>
+    <circle cx="0" cy="0" r="11" fill="#C9A84C" stroke="none"/>
+    <circle cx="-46" cy="56" r="20" stroke-width="9"/>
+    <circle cx="46" cy="56" r="20" stroke-width="9"/>
+  </g>
+  <text x="256" y="360" font-family="Georgia,serif" font-size="44" font-weight="bold" fill="#C9A84C" text-anchor="middle" letter-spacing="14">RENOÏ</text>
+</svg>

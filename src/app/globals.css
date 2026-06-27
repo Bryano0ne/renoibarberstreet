@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand colors */
+  --color-brand-black: #0A0A0A;
+  --color-brand-gold: #C9A84C;
+  --color-brand-gold-light: #E2C47A;
+  --color-brand-red: #8B2500;
+  --color-brand-cream: #F5F0E8;
+  --color-brand-gray: #1A1A1A;
+  --color-brand-gray-mid: #2A2A2A;
+  --color-brand-gray-light: #3A3A3A;
+
+  /* Fonts */
+  --font-display: var(--font-bebas);
+  --font-sans: var(--font-inter);
+
+  /* Backgrounds */
+  --color-background: var(--color-brand-black);
+  --color-foreground: var(--color-brand-cream);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0A0A;
+  color: #F5F0E8;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A84C;
+  border-radius: 2px;
+}
+
+/* Gold text utility */
+.text-gold {
+  color: #C9A84C;
+}
+
+/* Gold border */
+.border-gold {
+  border-color: #C9A84C;
+}
+
+/* Gradient gold */
+.gradient-gold {
+  background: linear-gradient(135deg, #C9A84C 0%, #E2C47A 50%, #C9A84C 100%);
+}
+
+/* Text gradient gold */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C9A84C, #E2C47A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section dark card */
+.card-dark {
+  background: #1A1A1A;
+  border: 1px solid #2A2A2A;
+  border-radius: 12px;
+}
+
+/* Hover glow gold */
+.hover-gold:hover {
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+  border-color: #C9A84C;
+  transition: all 0.3s ease;
+}
+
+/* Bandeau défilant */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Ken Burns — zoom lent sur le hero */
+@keyframes kenburns {
+  0%   { transform: scale(1.0) translate(0%, 0%); }
+  50%  { transform: scale(1.08) translate(-1%, -1%); }
+  100% { transform: scale(1.0) translate(0%, 0%); }
+}
+
+.animate-kenburns {
+  animation: kenburns 18s ease-in-out infinite;
+}
+
+/* Fade in du contenu hero */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeinup {
+  animation: fadeInUp 0.9s ease forwards;
+}
+.animate-fadeinup-delay {
+  animation: fadeInUp 0.9s ease 0.25s forwards;
+  opacity: 0;
+}
+.animate-fadeinup-delay2 {
+  animation: fadeInUp 0.9s ease 0.5s forwards;
+  opacity: 0;
+}
+
+/* ── INTRO CINÉMATIQUE ───────────────────── */
+
+@keyframes introBgPulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+@keyframes introLogoReveal {
+  0%   { opacity: 0; transform: scale(0.4) rotate(-8deg); filter: blur(20px); }
+  60%  { opacity: 1; transform: scale(1.08) rotate(1deg); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
+}
+
+@keyframes introTitleSlide {
+  0%   { opacity: 0; transform: translateY(60px) skewY(4deg); letter-spacing: 0.8em; }
+  100% { opacity: 1; transform: translateY(0) skewY(0deg); letter-spacing: 0.25em; }
+}
+
+@keyframes introSubSlide {
+  0%   { opacity: 0; transform: translateX(-40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes introLineGrow {
+  0%   { width: 0; opacity: 0; }
+  100% { width: 120px; opacity: 1; }
+}
+
+@keyframes introEnterPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.5); }
+  50%       { box-shadow: 0 0 0 16px rgba(201,168,76,0); }
+}
+
+@keyframes introParticle {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120px) scale(0); opacity: 0; }
+}
+
+@keyframes glitch1 {
+  0%, 95%, 100% { clip-path: none; transform: none; }
+  96%  { clip-path: inset(20% 0 50% 0); transform: translateX(-4px); }
+  97%  { clip-path: inset(60% 0 10% 0); transform: translateX(4px); }
+  98%  { clip-path: inset(40% 0 30% 0); transform: translateX(-2px); }
+}
+
+@keyframes introWipeOut {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes introBarberSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes scanline {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+
+.intro-logo-reveal   { animation: introLogoReveal 1.2s cubic-bezier(0.16,1,0.3,1) 0.4s both; }
+.intro-title-slide   { animation: introTitleSlide  0.9s cubic-bezier(0.16,1,0.3,1) 1.4s both; }
+.intro-sub-slide     { animation: introSubSlide    0.8s ease 2.1s both; }
+.intro-line-grow     { animation: introLineGrow    0.6s ease 2.0s both; }
+.intro-enter-pulse   { animation: introEnterPulse  1.6s ease-in-out 2.8s infinite; }
+.intro-glitch        { animation: glitch1          6s ease-in-out 2s infinite; }
+.intro-wipe-out      { animation: introWipeOut     0.8s cubic-bezier(0.76,0,0.24,1) forwards; }
+

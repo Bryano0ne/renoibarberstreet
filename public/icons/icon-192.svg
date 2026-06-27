@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" fill="#0A0A0A"/>
+  <!-- Cercle doré -->
+  <circle cx="96" cy="96" r="84" fill="none" stroke="#C9A84C" stroke-width="2.5" opacity="0.6"/>
+  <!-- Ciseau stylisé -->
+  <g transform="translate(96,96)" fill="none" stroke="#C9A84C" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Lame 1 -->
+    <line x1="-28" y1="-28" x2="18" y2="18" stroke-width="5"/>
+    <!-- Lame 2 -->
+    <line x1="28" y1="-28" x2="-18" y2="18" stroke-width="5"/>
+    <!-- Vis centrale -->
+    <circle cx="0" cy="0" r="5" fill="#C9A84C" stroke="none"/>
+    <!-- Anneaux -->
+    <circle cx="-22" cy="26" r="10" stroke-width="4"/>
+    <circle cx="22" cy="26" r="10" stroke-width="4"/>
+  </g>
+  <!-- R stylisé en bas -->
+  <text x="96" y="158" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#C9A84C" text-anchor="middle" letter-spacing="8">RENOÏ</text>
+</svg>
