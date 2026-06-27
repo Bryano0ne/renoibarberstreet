@@ -61,7 +61,7 @@ export default function MusicPlayer() {
       {/* Audio invisible en boucle */}
       <audio
         ref={audioRef}
-        src="/audio/bg-music.mp4"
+        src="/audio/bg-music.mp3"
         preload="auto"
         playsInline
         aria-hidden="true"
