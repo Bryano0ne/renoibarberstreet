@@ -1,7 +1,7 @@
-export const SALONS = {
+﻿export const SALONS = {
   ZAD: {
     id: "zad",
-    nom: "Renoï ZAD",
+    nom: "RENOI ZAD",
     adresse: "En face du Black Diamond & station ACCESS OIL",
     quartier: "ZAD, Ouagadougou",
     telephone: "+226 67 91 22 22",
@@ -11,7 +11,7 @@ export const SALONS = {
   },
   SAABA: {
     id: "saaba",
-    nom: "Renoï SAABA",
+    nom: "RENOI SAABA",
     adresse: "Route USTA, en face de la station SHELL",
     quartier: "SAABA, Ouagadougou",
     telephone: "+226 07 95 24 34",
@@ -22,7 +22,7 @@ export const SALONS = {
 } as const;
 
 export const BRAND = {
-  nom: "Renoï // City Barber",
+  nom: "RENOI Barberstreet",
   slogan: "La valeur sûre",
   instagram: "@renoi_barberstreet",
   instagramUrl: "https://www.instagram.com/renoi_barberstreet/",

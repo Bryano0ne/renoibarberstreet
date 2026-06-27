@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Tunnel from "@/components/reservation/Tunnel";
 
 export const metadata: Metadata = {
-  title: "Réserver | Renoï Barberstreet — Ouagadougou",
+  title: "Réserver | RENOI Barberstreet — Ouagadougou",
   description: "Réservez votre coupe en ligne en 2 minutes. Salon ZAD ou SAABA, disponible 7j/7 de 9h à 21h. Gratuit, sans engagement.",
 };
 

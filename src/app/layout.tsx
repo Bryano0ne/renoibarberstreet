@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -21,8 +21,8 @@ const SITE_URL =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Renoï Barberstreet — La valeur sûre | Ouagadougou",
-    template: "%s | Renoï Barberstreet",
+    default: "RENOI Barberstreet — La valeur sûre | Ouagadougou",
+    template: "%s | RENOI Barberstreet",
   },
   description:
     "Barbershop urbain premium à Ouagadougou. Coupes homme, barbe, soins. 2 salons : ZAD & SAABA. Ouvert 7j/7 de 9h à 21h. Réservez en ligne.",
@@ -32,19 +32,19 @@ export const metadata: Metadata = {
     "salon coiffure Ouaga",
     "coupe dégradé Ouagadougou",
     "barber Burkina",
-    "Renoï Barberstreet",
+    "RENOI Barberstreet",
     "barber ZAD",
     "barber SAABA",
   ],
-  authors: [{ name: "Renoï Barberstreet" }],
-  creator: "Renoï Barberstreet",
-  publisher: "Renoï Barberstreet",
+  authors: [{ name: "RENOI Barberstreet" }],
+  creator: "RENOI Barberstreet",
+  publisher: "RENOI Barberstreet",
   // Open Graph
   openGraph: {
-    title: "Renoï Barberstreet — La valeur sûre",
+    title: "RENOI Barberstreet — La valeur sûre",
     description: "Barbershop urbain premium à Ouagadougou. 2 salons. Réservez en ligne.",
     url: SITE_URL,
-    siteName: "Renoï Barberstreet",
+    siteName: "RENOI Barberstreet",
     locale: "fr_BF",
     type: "website",
     images: [
@@ -52,14 +52,14 @@ export const metadata: Metadata = {
         url: "/images/hero-salon.jpg",
         width: 1200,
         height: 630,
-        alt: "Renoï Barberstreet — Barbershop Ouagadougou",
+        alt: "RENOI Barberstreet — Barbershop Ouagadougou",
       },
     ],
   },
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "Renoï Barberstreet — La valeur sûre",
+    title: "RENOI Barberstreet — La valeur sûre",
     description: "Barbershop urbain premium à Ouagadougou. Réservez en ligne.",
     images: ["/images/hero-salon.jpg"],
   },
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Renoï",
+    title: "RENOI",
     startupImage: [
       { url: "/icons/icon-512.svg" },
     ],
@@ -107,7 +107,7 @@ const jsonLd = {
     {
       "@type": "HairSalon",
       "@id": `${SITE_URL}/#zad`,
-      "name": "Renoï Barberstreet — Salon ZAD",
+      "name": "RENOI Barberstreet — Salon ZAD",
       "description": "Barbershop urbain premium à Ouagadougou, secteur ZAD.",
       "url": SITE_URL,
       "telephone": "+22600000000",
@@ -131,7 +131,7 @@ const jsonLd = {
     {
       "@type": "HairSalon",
       "@id": `${SITE_URL}/#saaba`,
-      "name": "Renoï Barberstreet — Salon SAABA",
+      "name": "RENOI Barberstreet — Salon SAABA",
       "description": "Barbershop urbain premium à Ouagadougou, secteur SAABA.",
       "url": SITE_URL,
       "telephone": "+22600000001",
@@ -156,7 +156,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       "url": SITE_URL,
-      "name": "Renoï Barberstreet",
+      "name": "RENOI Barberstreet",
       "description": "Barbershop urbain premium à Ouagadougou",
       "inLanguage": "fr-BF",
     },

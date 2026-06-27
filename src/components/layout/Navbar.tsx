@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -27,8 +27,9 @@ export default function Navbar() {
           <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#C9A84C]/40 group-hover:border-[#C9A84C] transition-all shrink-0">
             <Image
               src="/images/logo.jpg"
-              alt="Renoï Barberstreet Logo"
+              alt="RENOI Barberstreet Logo"
               fill
+              sizes="40px"
               className="object-cover"
               priority
             />

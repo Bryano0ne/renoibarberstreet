@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+﻿import { NextRequest } from "next/server";
 
 const CINETPAY_URL = "https://api-checkout.cinetpay.com/v2/payment";
 
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
         transaction_id,
         amount: montant,
         currency: "XOF",
-        description: description || `Paiement Renoï Barberstreet — ${reservation_id}`,
+        description: description || `Paiement RENOI Barberstreet — ${reservation_id}`,
         return_url: `${appUrl}/paiement/succes?id=${reservation_id}&txn=${transaction_id}`,
         notify_url: `${appUrl}/api/paiement/webhook`,
         cancel_url: `${appUrl}/paiement/echec?id=${reservation_id}`,

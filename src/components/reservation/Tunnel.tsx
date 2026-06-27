@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect, useCallback } from "react";
 import { SALONS } from "@/lib/constants";
 import { formatFCFA } from "@/lib/utils";
@@ -236,7 +236,7 @@ export default function Tunnel() {
 
   const whatsappMsg = useCallback(() => {
     if (!reservation) return "";
-    const msg = `Bonjour Renoï Barberstreet ! 👋\nJe viens de réserver en ligne :\n\n📅 ${formatDateFR(reservation.date)} à ${reservation.heure}\n✂️ ${reservation.prestation}\n📍 Salon ${reservation.salon}\n👤 ${reservation.client_nom}\n📞 ${reservation.client_telephone}\n\nRéférence : *${reservation.id}*`;
+    const msg = `Bonjour RENOI Barberstreet ! 👋\nJe viens de réserver en ligne :\n\n📅 ${formatDateFR(reservation.date)} à ${reservation.heure}\n✂️ ${reservation.prestation}\n📍 Salon ${reservation.salon}\n👤 ${reservation.client_nom}\n📞 ${reservation.client_telephone}\n\nRéférence : *${reservation.id}*`;
     return `https://wa.me/${SALON_PHONES[reservation.salon as SalonId]}?text=${encodeURIComponent(msg)}`;
   }, [reservation]);
 
@@ -268,7 +268,7 @@ export default function Tunnel() {
           <div className="h-px bg-[#2A2A2A]" />
           <div className="flex justify-between">
             <span className="text-[#F5F0E8]/40 text-sm">Salon</span>
-            <span className="text-[#F5F0E8] font-semibold text-sm">Renoï {reservation.salon}</span>
+            <span className="text-[#F5F0E8] font-semibold text-sm">RENOI {reservation.salon}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-[#F5F0E8]/40 text-sm">Date</span>
@@ -290,6 +290,21 @@ export default function Tunnel() {
             <span className="text-[#F5F0E8]/40 text-sm">Barbier assigné</span>
             <span className="text-[#F5F0E8] font-semibold text-sm">{reservation.barbier}</span>
           </div>
+        </div>
+
+        {/* Message de remerciement */}
+        <div className="relative bg-gradient-to-br from-[#1A1000] to-[#0A0A0A] border border-[#C9A84C]/40 rounded-2xl px-6 py-5 mb-6 overflow-hidden">
+          {/* Reflets décoratifs */}
+          <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-[#C9A84C]/5 blur-2xl pointer-events-none" />
+          <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full bg-[#C9A84C]/5 blur-xl pointer-events-none" />
+          <p className="text-[10px] text-[#C9A84C]/60 tracking-[0.35em] uppercase mb-3">✦ RENOI Barberstreet ✦</p>
+          <p className="text-[#F5F0E8] text-sm leading-relaxed">
+            Votre réservation a été confirmée avec succès.<br />
+            Merci pour votre fidélité et à très vite au salon.
+          </p>
+          <p className="text-[#C9A84C] font-black text-base mt-3 tracking-wide">
+            Minimum 03 baby, always !
+          </p>
         </div>
 
         {/* Payer maintenant */}
@@ -342,7 +357,7 @@ export default function Tunnel() {
                       {id[0]}
                     </div>
                     <div>
-                      <p className="font-black text-[#F5F0E8] text-base">Renoï {id}</p>
+                      <p className="font-black text-[#F5F0E8] text-base">RENOI {id}</p>
                       <p className="text-[10px] text-[#C9A84C] tracking-widest uppercase">Ouagadougou</p>
                     </div>
                   </div>

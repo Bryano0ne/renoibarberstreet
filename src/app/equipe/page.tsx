@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { BARBIERS_DEMO } from "@/lib/demo-data";
 
 export const metadata: Metadata = {
-  title: "Notre Équipe — Renoï // City Barber | Barbiers Ouagadougou",
+  title: "Notre Équipe — RENOI Barberstreet | Barbiers Ouagadougou",
   description:
-    "Découvrez l'équipe de barbiers de Renoï // City Barber : des artistes passionnés à ZAD et SAABA, Ouagadougou.",
+    "Découvrez l'équipe de barbiers de RENOI Barberstreet : des artistes passionnés à ZAD et SAABA, Ouagadougou.",
 };
 
 export default function EquipePage() {
@@ -69,7 +69,7 @@ export default function EquipePage() {
             Tu es barbier ?
           </h3>
           <p className="text-[#F5F0E8]/50 mb-6 max-w-sm mx-auto text-sm">
-            Renoï // City Barber recherche toujours des artistes talentueux pour rejoindre l&apos;équipe.
+            RENOI Barberstreet recherche toujours des artistes talentueux pour rejoindre l&apos;équipe.
           </p>
           <a
             href="https://wa.me/+22667912222?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20pour%20rejoindre%20l%27%C3%A9quipe%20Reno%C3%AF%20City%20Barber."

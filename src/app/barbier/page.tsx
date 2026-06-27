@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { getBarbierSession } from "@/app/actions/barbier";
 import BarbierDashboard from "@/components/barbier/BarbierDashboard";
 
 export const metadata: Metadata = {
-  title: "Espace Barbier | Renoï Barberstreet",
+  title: "Espace Barbier | RENOI Barberstreet",
   robots: { index: false, follow: false },
 };
 

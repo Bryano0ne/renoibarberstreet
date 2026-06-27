@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -82,7 +82,7 @@ export default function Intro() {
           <div className="relative mx-auto rounded-full overflow-hidden"
             style={{ width: 148, height: 148,
               boxShadow: "0 0 0 3px rgba(201,168,76,0.5), 0 0 40px rgba(201,168,76,0.25), 0 0 80px rgba(201,168,76,0.1)" }}>
-            <Image src="/images/logo.jpg" alt="Renoï Barberstreet" fill sizes="148px" className="object-cover" priority />
+            <Image src="/images/logo.jpg" alt="RENOI Barberstreet" fill sizes="148px" className="object-cover" priority />
           </div>
         </div>
 

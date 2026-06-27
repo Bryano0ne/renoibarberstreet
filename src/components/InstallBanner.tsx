@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 
 interface BeforeInstallPromptEvent extends Event {
@@ -55,7 +55,7 @@ export default function InstallBanner() {
             <span className="text-xl">✂️</span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-[#F5F0E8] font-black text-sm mb-0.5">Installer Renoï</p>
+            <p className="text-[#F5F0E8] font-black text-sm mb-0.5">Installer RENOI</p>
             <p className="text-[#F5F0E8]/40 text-xs leading-relaxed">
               Accède à ton barbier en un tap — sans navigateur, sans délai.
             </p>

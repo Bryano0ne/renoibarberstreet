@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import DashboardGerant from "@/components/gerant/DashboardGerant";
 
 export const metadata: Metadata = {
-  title: "Dashboard Gérant | Renoï Barberstreet",
+  title: "Dashboard Gérant | RENOI Barberstreet",
   robots: { index: false, follow: false },
 };
 

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { formatFCFA } from "@/lib/utils";
@@ -58,7 +58,7 @@ function PaiementForm() {
         body: JSON.stringify({
           reservation_id: id, montant: total,
           client_nom: nom, client_telephone: tel,
-          description: `${prestation} — Renoï ${salon}`,
+          description: `${prestation} — RENOI ${salon}`,
           methode,
         }),
       });
@@ -79,7 +79,7 @@ function PaiementForm() {
         <div className="space-y-2 text-sm">
           <div className="flex justify-between"><span className="text-[#F5F0E8]/40">Réservation</span><span className="text-[#F5F0E8] font-mono text-xs">{id}</span></div>
           <div className="flex justify-between"><span className="text-[#F5F0E8]/40">Prestation</span><span className="text-[#F5F0E8] font-semibold">{prestation}</span></div>
-          <div className="flex justify-between"><span className="text-[#F5F0E8]/40">Salon</span><span className="text-[#F5F0E8]">Renoï {salon}</span></div>
+          <div className="flex justify-between"><span className="text-[#F5F0E8]/40">Salon</span><span className="text-[#F5F0E8]">RENOI {salon}</span></div>
           {date && <div className="flex justify-between"><span className="text-[#F5F0E8]/40">Date</span><span className="text-[#F5F0E8]">{date} · {heure}</span></div>}
           <div className="h-px bg-[#2A2A2A] my-2" />
           {reduction > 0 && <>

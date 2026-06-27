@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { SALONS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Nos Salons — Renoï // City Barber | ZAD & SAABA Ouagadougou",
+  title: "Nos Salons — RENOI Barberstreet | ZAD & SAABA Ouagadougou",
   description:
-    "Renoï // City Barber dispose de 2 salons à Ouagadougou : ZAD (en face Black Diamond) et SAABA (Route USTA). Ouverts 7j/7 de 9h à 21h.",
+    "RENOI Barberstreet dispose de 2 salons à Ouagadougou : ZAD (en face Black Diamond) et SAABA (Route USTA). Ouverts 7j/7 de 9h à 21h.",
 };
 
 export default function NosSalonsPage() {

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { formatFCFA } from "@/lib/utils";
@@ -48,7 +48,7 @@ function CarteFidelite({ total }: { total: number }) {
           </div>
           <div className="flex items-center gap-1">
             <span className="text-[#C9A84C] text-2xl">💈</span>
-            <span className="text-xs text-[#F5F0E8]/30 font-semibold">Renoï</span>
+            <span className="text-xs text-[#F5F0E8]/30 font-semibold">RENOI</span>
           </div>
         </div>
 

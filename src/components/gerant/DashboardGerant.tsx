@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect, useCallback } from "react";
 import { formatFCFA } from "@/lib/utils";
 import { gerantDeconnexion } from "@/app/actions/gerant";
@@ -165,7 +165,7 @@ export default function DashboardGerant() {
       <div className="no-print flex items-center justify-between mb-8 flex-wrap gap-3">
         <div>
           <h1 className="text-2xl font-black text-[#F5F0E8]">Dashboard Gérant</h1>
-          <p className="text-[#F5F0E8]/40 text-sm">Renoï Barberstreet · Vue d&apos;ensemble</p>
+          <p className="text-[#F5F0E8]/40 text-sm">RENOI Barberstreet · Vue d&apos;ensemble</p>
         </div>
         <div className="flex items-center gap-2">
           <form action={gerantDeconnexion}>
@@ -331,7 +331,7 @@ export default function DashboardGerant() {
               <div className="bg-gradient-to-br from-[#1A1000] to-[#0A0A0A] border border-[#C9A84C]/20 rounded-2xl p-6 mb-5">
                 <p className="text-[10px] text-[#C9A84C]/60 tracking-[0.4em] uppercase mb-1">✂️ Haircut Replay</p>
                 <h3 className="text-xl font-black text-[#F5F0E8] mb-0.5">{rapport.periode}</h3>
-                <p className="text-[#F5F0E8]/30 text-xs">Rapport généré automatiquement · Renoï Barberstreet</p>
+                <p className="text-[#F5F0E8]/30 text-xs">Rapport généré automatiquement · RENOI Barberstreet</p>
               </div>
 
               {/* Totaux */}

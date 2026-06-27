@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Image from "next/image";
 import { formatFCFA } from "@/lib/utils";
 
@@ -59,7 +59,7 @@ export default function RecuClient({ id, montant, prestation, salon, mode, date,
           {/* Header */}
           <div className="bg-gradient-to-br from-[#1A1000] to-[#0A0A0A] p-6 text-center border-b border-[#2A2A2A]">
             <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#C9A84C]/40 mx-auto mb-3">
-              <Image src="/images/logo.jpg" alt="Renoï Barberstreet" fill sizes="56px" className="object-cover" />
+              <Image src="/images/logo.jpg" alt="RENOI Barberstreet" fill sizes="56px" className="object-cover" />
             </div>
             <h1 className="recu-gold text-[#C9A84C] font-black text-lg tracking-widest uppercase">RENOI BARBERSTREET</h1>
             <p className="text-[#F5F0E8]/40 text-xs tracking-widest mt-0.5">La valeur sûre · Ouagadougou</p>
@@ -77,7 +77,7 @@ export default function RecuClient({ id, montant, prestation, salon, mode, date,
               {[
                 { label: "Référence", value: id, mono: true, gold: true },
                 { label: "Prestation", value: prestation },
-                { label: "Salon", value: `Renoï ${salon}` },
+                { label: "Salon", value: `RENOI ${salon}` },
                 date && { label: "Date RDV", value: `${dateFR(date)}${heure ? ` à ${heure}` : ""}` },
                 barbier && { label: "Barbier", value: barbier },
                 { label: "Mode paiement", value: mode === "sur_place" ? "Paiement sur place" : mode === "orange_money" ? "Orange Money" : mode === "moov_money" ? "Moov Money" : mode === "wave" ? "Wave" : "En ligne" },

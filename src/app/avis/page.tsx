@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { AVIS_DEMO } from "@/lib/demo-data";
 
 export const metadata: Metadata = {
-  title: "Avis Clients — Renoï // City Barber | Barbershop Ouagadougou",
+  title: "Avis Clients — RENOI Barberstreet | Barbershop Ouagadougou",
   description:
-    "Lisez les avis de nos clients sur Renoï // City Barber. Note moyenne 4.9/5. Barbershop premium à Ouagadougou, ZAD & SAABA.",
+    "Lisez les avis de nos clients sur RENOI Barberstreet. Note moyenne 4.9/5. Barbershop premium à Ouagadougou, ZAD & SAABA.",
 };
 
 export default function AvisPage() {
@@ -31,7 +31,7 @@ export default function AvisPage() {
           </h1>
           <p className="text-[#F5F0E8]/50 max-w-xl mx-auto">
             La satisfaction de nos clients est notre meilleure récompense.
-            Découvrez ce qu&apos;ils pensent de leur expérience chez Renoï.
+            Découvrez ce qu&apos;ils pensent de leur expérience chez RENOI.
           </p>
         </div>
 
@@ -116,7 +116,7 @@ export default function AvisPage() {
           <p className="text-3xl mb-4">⭐</p>
           <h3 className="text-2xl font-black text-[#F5F0E8] mb-3">Tu es client chez nous ?</h3>
           <p className="text-[#F5F0E8]/50 mb-7 text-sm max-w-sm mx-auto">
-            Partage ton expérience et aide les autres clients à choisir Renoï // City Barber.
+            Partage ton expérience et aide les autres clients à choisir RENOI Barberstreet.
           </p>
           <Link
             href="/compte"

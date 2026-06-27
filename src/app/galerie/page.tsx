@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BRAND } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Galerie — Renoï Barberstreet | Coupes & Réalisations Ouagadougou",
+  title: "Galerie — RENOI Barberstreet | Coupes & Réalisations Ouagadougou",
   description:
-    "Découvrez les réalisations de Renoï Barberstreet : dégradés, tapers, fades, twists, locks. Barbershop premium à Ouagadougou.",
+    "Découvrez les réalisations de RENOI Barberstreet : dégradés, tapers, fades, twists, locks. Barbershop premium à Ouagadougou.",
 };
 
 // ─── Photos réelles avec noms indiqués sur les images ──────────
@@ -115,7 +115,7 @@ export default function GaleriePage() {
 
               {/* Badge catégorie en haut */}
               <div className="absolute top-3 right-3 px-2.5 py-1 bg-[#0A0A0A]/70 backdrop-blur-sm rounded-full border border-[#2A2A2A] text-[10px] text-[#F5F0E8]/50 font-semibold">
-                ✦ Renoï Original
+                ✦ RENOI Original
               </div>
             </div>
           ))}

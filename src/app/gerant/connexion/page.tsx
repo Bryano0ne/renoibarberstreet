@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useActionState } from "react";
 import { gerantConnexion } from "@/app/actions/gerant";
 import Image from "next/image";
@@ -11,7 +11,7 @@ export default function GerantConnexionPage() {
       <div className="w-full max-w-sm">
         <div className="flex flex-col items-center mb-8">
           <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-[#C9A84C]/40 mb-4">
-            <Image src="/images/logo.jpg" alt="Renoï" fill sizes="64px" className="object-cover" />
+            <Image src="/images/logo.jpg" alt="RENOI" fill sizes="64px" className="object-cover" />
           </div>
           <h1 className="text-2xl font-black text-[#F5F0E8]">Espace Gérant</h1>
           <p className="text-[#F5F0E8]/40 text-sm mt-1">Dashboard administrateur</p>

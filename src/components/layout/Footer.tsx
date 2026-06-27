@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { BRAND, SALONS } from "@/lib/constants";
 
 export default function Footer() {
@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-12">
         <div>
           <p className="text-[#C9A84C] font-black text-sm tracking-widest uppercase mb-2">
-            RENOÏ // CITY BARBER
+            RENOI BARBERSTREET
           </p>
           <p className="text-[#F5F0E8]/50 text-sm italic mb-6">
             &ldquo;{BRAND.slogan}&rdquo; 💈
@@ -81,7 +81,7 @@ export default function Footer() {
 
       <div className="border-t border-[#1A1A1A] px-6 py-5">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-[#F5F0E8]/20">
-          <p>© {new Date().getFullYear()} Renoï // City Barber · Ouagadougou, Burkina Faso</p>
+          <p>© {new Date().getFullYear()} RENOI Barberstreet · Ouagadougou, Burkina Faso</p>
           <div className="flex gap-5">
             <Link href="/mentions-legales" className="hover:text-[#C9A84C] transition-colors">
               Mentions légales

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Image from "next/image";
 import { BRAND, SALONS } from "@/lib/constants";
 import { PRESTATIONS_DEMO, BARBIERS_DEMO, AVIS_DEMO } from "@/lib/demo-data";
@@ -18,7 +18,7 @@ const BADGE_LABELS: Record<string, string> = {
 const schemaOrg = {
   "@context": "https://schema.org",
   "@type": "HairSalon",
-  name: "Renoï // City Barber",
+  name: "RENOI Barberstreet",
   description: "Barbershop urbain premium à Ouagadougou, Burkina Faso. La valeur sûre.",
   url: process.env.NEXT_PUBLIC_APP_URL,
   telephone: "+22667912222",
@@ -55,7 +55,7 @@ export default function HomePage() {
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/hero-salon.jpg"
-              alt="Intérieur Renoï Barberstreet"
+              alt="Intérieur RENOI Barberstreet"
               fill
               className="object-cover animate-kenburns"
               priority
@@ -82,7 +82,7 @@ export default function HomePage() {
               <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-[#C9A84C]/60 shadow-2xl shadow-[#C9A84C]/20">
                 <Image
                   src="/images/logo.jpg"
-                  alt="Logo Renoï Barberstreet"
+                  alt="Logo RENOI Barberstreet"
                   fill
                   className="object-cover"
                   priority
@@ -94,8 +94,8 @@ export default function HomePage() {
             </div>
 
             <h1 className="animate-fadeinup-delay text-6xl md:text-8xl font-black tracking-tight text-[#F5F0E8] leading-none mb-4 drop-shadow-2xl">
-              RENOÏ //<br />
-              <span className="text-[#C9A84C]">CITY BARBER</span>
+              RENOI<br />
+              <span className="text-[#C9A84C]">BARBERSTREET</span>
             </h1>
             <p className="animate-fadeinup-delay2 text-lg md:text-xl text-[#F5F0E8]/60 mb-10 italic drop-shadow-lg">
               &ldquo;{BRAND.slogan}&rdquo; 💈

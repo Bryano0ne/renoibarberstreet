@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -49,7 +49,7 @@ function SuccesContent() {
         {salon && (
           <div className="flex justify-between">
             <span className="text-[#F5F0E8]/40 text-sm">Salon</span>
-            <span className="text-[#F5F0E8] text-sm">Renoï {salon}</span>
+            <span className="text-[#F5F0E8] text-sm">RENOI {salon}</span>
           </div>
         )}
         {montant > 0 && (
@@ -72,6 +72,19 @@ function SuccesContent() {
             {surPlace ? "Réservé — paiement sur place" : "Payé ✓"}
           </span>
         </div>
+      </div>
+
+      {/* Message de remerciement */}
+      <div className="relative bg-gradient-to-br from-[#1A1000] to-[#0A0A0A] border border-[#C9A84C]/40 rounded-2xl px-6 py-5 mb-6 overflow-hidden text-left">
+        <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-[#C9A84C]/5 blur-2xl pointer-events-none" />
+        <p className="text-[10px] text-[#C9A84C]/60 tracking-[0.35em] uppercase mb-3">✦ RENOI Barberstreet ✦</p>
+        <p className="text-[#F5F0E8] text-sm leading-relaxed">
+          Votre réservation a été confirmée avec succès.<br />
+          Merci pour votre fidélité et à très vite au salon.
+        </p>
+        <p className="text-[#C9A84C] font-black text-base mt-3 tracking-wide">
+          Minimum 03 baby, always !
+        </p>
       </div>
 
       {/* Actions */}

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 export default function OfflinePage() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
@@ -7,7 +7,7 @@ export default function OfflinePage() {
           <span className="text-4xl">✂️</span>
         </div>
         <h1 className="text-3xl font-black text-[#F5F0E8] mb-2 tracking-wide">
-          RENOÏ
+          RENOI
         </h1>
         <p className="text-[#C9A84C] text-sm tracking-[0.3em] uppercase mb-8">Barberstreet</p>
       </div>
