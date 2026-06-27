@@ -1,97 +1,83 @@
 "use client";
-import { useEffect, useRef, useCallback } from "react";
-
-declare global {
-  interface Window {
-    YT: {
-      Player: new (el: HTMLElement | null, opts: object) => YTPlayer;
-      PlayerState: { PLAYING: number; PAUSED: number; ENDED: number };
-    };
-    onYouTubeIframeAPIReady: () => void;
-    _ytBg?: YTPlayer;
-  }
-}
-
-interface YTPlayer {
-  playVideo(): void;
-  setVolume(v: number): void;
-  setShuffle(s: boolean): void;
-}
-
-// ─── Remplacer par l'ID de la vidéo YouTube biggplaya P&Z ───
-// Ex: https://www.youtube.com/watch?v=XXXXXXXX  →  VIDEO_ID = "XXXXXXXX"
-const VIDEO_ID = "OyxBbdX0Hq0"; // biggplaya P&Z feat Zayii
-const PLAYLIST_FALLBACK = "PLjSLTEAvEnTkpdb17bv0r1BaROOs3yrMW";
+import { useEffect, useRef, useState } from "react";
 
 export default function MusicPlayer() {
-  const divRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [muted, setMuted]     = useState(false);
+  const [ready, setReady]     = useState(false);
+  const [playing, setPlaying] = useState(false);
 
-  const init = useCallback(() => {
-    if (!window.YT?.Player || !divRef.current) return;
-    if (window._ytBg) return;
+  // Démarre la lecture dès que l'utilisateur interagit pour la première fois
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
 
-    const playerVars: Record<string, unknown> = {
-      autoplay: 1,
-      controls: 0,
-      disablekb: 1,
-      fs: 0,
-      modestbranding: 1,
-      rel: 0,
-      loop: 1,
-      origin: window.location.origin,
+    audio.volume = 0.35;
+    audio.loop   = true;
+
+    const tryPlay = () => {
+      audio.play().then(() => setPlaying(true)).catch(() => {});
     };
 
-    if (VIDEO_ID) {
-      playerVars.playlist = VIDEO_ID;
-    } else {
-      playerVars.listType = "playlist";
-      playerVars.list = PLAYLIST_FALLBACK;
-    }
+    // Tentative auto-play immédiate (marche si le navigateur l'autorise)
+    tryPlay();
 
-    window._ytBg = new window.YT.Player(divRef.current, {
-      videoId: VIDEO_ID || undefined,
-      height: "1",
-      width: "1",
-      playerVars,
-      events: {
-        onReady: (e: { target: YTPlayer }) => {
-          e.target.setVolume(40);
-          if (!VIDEO_ID) e.target.setShuffle(true);
-          e.target.playVideo();
-        },
-      },
-    });
+    // Sinon, on accroche au premier geste utilisateur
+    const onInteract = () => {
+      tryPlay();
+      window.removeEventListener("click",    onInteract);
+      window.removeEventListener("touchstart", onInteract);
+      window.removeEventListener("keydown",  onInteract);
+    };
+    window.addEventListener("click",     onInteract, { once: true });
+    window.addEventListener("touchstart", onInteract, { once: true, passive: true });
+    window.addEventListener("keydown",   onInteract, { once: true });
+
+    audio.addEventListener("canplay", () => setReady(true));
+
+    return () => {
+      window.removeEventListener("click",    onInteract);
+      window.removeEventListener("touchstart", onInteract);
+      window.removeEventListener("keydown",  onInteract);
+    };
   }, []);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.YT?.Player) {
-      init();
+  const toggle = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (muted) {
+      audio.muted = false;
+      setMuted(false);
+      // Si elle n'avait pas encore démarré, on lance maintenant
+      if (!playing) audio.play().then(() => setPlaying(true)).catch(() => {});
     } else {
-      if (!document.getElementById("yt-api")) {
-        const s = document.createElement("script");
-        s.id = "yt-api";
-        s.src = "https://www.youtube.com/iframe_api";
-        document.head.appendChild(s);
-      }
-      window.onYouTubeIframeAPIReady = init;
+      audio.muted = true;
+      setMuted(true);
     }
-  }, [init]);
+  };
 
   return (
-    <div
-      ref={divRef}
-      aria-hidden="true"
-      style={{
-        position: "fixed",
-        width: 1,
-        height: 1,
-        opacity: 0,
-        pointerEvents: "none",
-        bottom: 0,
-        left: 0,
-        overflow: "hidden",
-      }}
-    />
+    <>
+      {/* Audio invisible en boucle */}
+      <audio
+        ref={audioRef}
+        src="/audio/bg-music.mp4"
+        preload="auto"
+        playsInline
+        aria-hidden="true"
+      />
+
+      {/* Bouton mute — visible seulement quand le fichier est prêt */}
+      {ready && (
+        <button
+          onClick={toggle}
+          aria-label={muted ? "Activer la musique" : "Couper la musique"}
+          title={muted ? "Activer la musique" : "Couper la musique"}
+          className="fixed bottom-24 right-4 z-50 flex items-center justify-center w-9 h-9 rounded-full bg-[#0A0A0A]/80 border border-[#C9A84C]/30 backdrop-blur-sm text-base hover:border-[#C9A84C]/70 hover:bg-[#111111] transition-all shadow-lg shadow-black/40 select-none"
+        >
+          {muted ? "🔇" : "🔊"}
+        </button>
+      )}
+    </>
   );
 }
