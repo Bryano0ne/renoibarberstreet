@@ -2,27 +2,42 @@ import { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 
 export async function POST(req: NextRequest) {
-  const cookieStore = await cookies();
-  const sessionRaw = cookieStore.get("renoi-session")?.value;
-  if (!sessionRaw) return Response.json({ error: "Non connecté" }, { status: 401 });
-
-  const session = JSON.parse(sessionRaw);
   const body = await req.json();
-  const { reservation_id, note, commentaire } = body;
+  const { note, commentaire, prenom, salon, reservation_id } = body;
 
-  if (!reservation_id || !note || note < 1 || note > 5) {
-    return Response.json({ error: "Données invalides." }, { status: 400 });
+  if (!note || note < 1 || note > 5) {
+    return Response.json({ error: "Note invalide (1 à 5)." }, { status: 400 });
+  }
+  if (!salon || !["ZAD", "SAABA"].includes(salon)) {
+    return Response.json({ error: "Salon invalide." }, { status: 400 });
   }
 
-  // En prod : INSERT INTO avis + UPDATE reservations SET note = note WHERE id = reservation_id
+  // Récupérer le nom depuis la session si connecté, sinon depuis le champ prenom
+  const cookieStore = await cookies();
+  const sessionRaw = cookieStore.get("renoi-session")?.value;
+  let clientNom = prenom?.trim() || "";
+
+  if (sessionRaw) {
+    try {
+      const session = JSON.parse(sessionRaw);
+      if (session.nom) clientNom = session.nom;
+    } catch {}
+  }
+
+  if (!clientNom) {
+    return Response.json({ error: "Prénom requis." }, { status: 400 });
+  }
+
   const avis = {
     id: `AV-${Date.now().toString(36).toUpperCase()}`,
-    reservation_id,
-    client_nom: session.nom,
+    reservation_id: reservation_id || null,
+    client_nom: clientNom,
+    salon,
     note,
-    commentaire: commentaire || "",
+    commentaire: commentaire?.trim() || "",
     created_at: new Date().toISOString(),
   };
 
+  // En prod : INSERT INTO avis VALUES (...)
   return Response.json({ success: true, avis }, { status: 201 });
 }

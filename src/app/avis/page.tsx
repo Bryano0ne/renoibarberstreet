@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { AVIS_DEMO } from "@/lib/demo-data";
+import FormulaireAvis from "@/components/avis/FormulaireAvis";
 
 export const metadata: Metadata = {
   title: "Avis Clients — RENOI Barberstreet | Barbershop Ouagadougou",
@@ -111,20 +112,8 @@ export default function AvisPage() {
           ))}
         </div>
 
-        {/* Laisser un avis */}
-        <div className="bg-gradient-to-br from-[#111111] to-[#0d0800] border border-[#C9A84C]/20 rounded-2xl p-8 text-center">
-          <p className="text-3xl mb-4">⭐</p>
-          <h3 className="text-2xl font-black text-[#F5F0E8] mb-3">Tu es client chez nous ?</h3>
-          <p className="text-[#F5F0E8]/50 mb-7 text-sm max-w-sm mx-auto">
-            Partage ton expérience et aide les autres clients à choisir RENOI Barberstreet.
-          </p>
-          <Link
-            href="/compte"
-            className="inline-block bg-[#C9A84C] text-[#0A0A0A] font-bold px-8 py-3 rounded-full hover:bg-[#E2C47A] transition-colors"
-          >
-            Laisser un avis →
-          </Link>
-        </div>
+        {/* Formulaire avis — accessible sans compte */}
+        <FormulaireAvis />
 
         <div className="text-center mt-12">
           <Link

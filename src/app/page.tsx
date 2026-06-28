@@ -4,6 +4,26 @@ import { BRAND, SALONS } from "@/lib/constants";
 import { PRESTATIONS_DEMO, BARBIERS_DEMO, AVIS_DEMO } from "@/lib/demo-data";
 import { formatFCFA, formatDuration } from "@/lib/utils";
 
+const PRESTATION_PHOTOS: Record<string, string> = {
+  "1": "/images/prestations/coupe-classique.jpg",
+  "2": "/images/prestations/degrade-classique.jpg",
+  "3": "/images/prestations/afro-sculpte.jpg",
+  "4": "/images/prestations/taille-barbe.jpg",
+  "5": "/images/prestations/rasage-traditionnel.jpg",
+  "6": "/images/prestations/combo-coupe-barbe.jpg",
+  "7": "/images/prestations/enfant.jpg",
+  "8": "/images/prestations/soin-chevelu.svg",
+};
+
+const GALERIE_PHOTOS = [
+  { src: "/images/galerie/tapers-fades.jpg",       alt: "Tapers & Fades" },
+  { src: "/images/galerie/twist-locks.jpg",         alt: "Twist & Locks" },
+  { src: "/images/prestations/degrade-classique.jpg", alt: "Dégradé Classique" },
+  { src: "/images/prestations/afro-sculpte.jpg",    alt: "Afro Sculpté" },
+  { src: "/images/prestations/combo-coupe-barbe.jpg", alt: "Combo Coupe + Barbe" },
+  { src: "/images/prestations/rasage-traditionnel.jpg", alt: "Rasage Traditionnel" },
+];
+
 const BADGE_STYLES: Record<string, string> = {
   populaire: "bg-[#8B2500]/80 text-[#F5F0E8] border border-[#8B2500]",
   nouveau: "bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/50",
@@ -169,8 +189,18 @@ export default function HomePage() {
                   key={p.id}
                   className="bg-[#111111] border border-[#2A2A2A] rounded-2xl p-6 hover:border-[#C9A84C]/40 transition-all group"
                 >
-                  <div className="aspect-video bg-[#1A1A1A] rounded-xl mb-5 flex items-center justify-center overflow-hidden">
-                    <span className="text-5xl opacity-30 group-hover:opacity-60 transition-opacity">💈</span>
+                  <div className="aspect-video bg-[#1A1A1A] rounded-xl mb-5 overflow-hidden relative">
+                    {PRESTATION_PHOTOS[p.id] ? (
+                      <Image
+                        src={PRESTATION_PHOTOS[p.id]}
+                        alt={p.nom}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <span className="flex items-center justify-center w-full h-full text-5xl opacity-30 group-hover:opacity-60 transition-opacity">💈</span>
+                    )}
                   </div>
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <h3 className="font-bold text-[#F5F0E8] text-lg">{p.nom}</h3>
@@ -264,14 +294,18 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-10">
-              {Array(6).fill(null).map((_, i) => (
+              {GALERIE_PHOTOS.map((photo, i) => (
                 <div
                   key={i}
-                  className="aspect-square bg-gradient-to-br from-[#1A1A1A] to-[#111111] border border-[#2A2A2A] rounded-xl flex items-center justify-center hover:border-[#C9A84C]/30 transition-all group cursor-pointer overflow-hidden"
+                  className="aspect-square rounded-xl overflow-hidden border border-[#2A2A2A] hover:border-[#C9A84C]/40 transition-all group cursor-pointer relative bg-[#111111]"
                 >
-                  <span className="text-4xl opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all">
-                    {["💈", "✂️", "🪒", "💈", "✂️", "🪒"][i]}
-                  </span>
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               ))}
             </div>
@@ -288,6 +322,61 @@ export default function HomePage() {
                 </svg>
                 Voir plus sur Instagram
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── EXPÉRIENCE RENOI ── */}
+        <section className="py-20 px-6 border-t border-[#2A2A2A] bg-[#080808]">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">
+                Pendant ton passage
+              </p>
+              <h2 className="text-4xl font-black text-[#F5F0E8]">
+                L&apos;<span className="text-[#C9A84C]">Expérience</span> RENOI
+              </h2>
+              <p className="text-[#F5F0E8]/30 text-sm mt-3">
+                Commander, suivre ta fidélité, jouer — tout depuis ton téléphone.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Boissons */}
+              <Link
+                href="/boissons"
+                className="group bg-[#111111] border border-[#2A2A2A] rounded-2xl p-8 hover:border-[#C9A84C]/40 transition-all flex flex-col"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#E8A020]/10 border border-[#E8A020]/20 flex items-center justify-center text-3xl mb-5">
+                  🧃
+                </div>
+                <h3 className="text-2xl font-black text-[#F5F0E8] mb-2">Boissons</h3>
+                <p className="text-[#F5F0E8]/40 text-sm leading-relaxed mb-6 flex-1">
+                  Commande ta boisson depuis ton téléphone pendant l&apos;attente.
+                  Dafani, Coca-Cola, Fanta, Sprite, Eau Lafi — servi directement à ta place.
+                </p>
+                <div className="flex items-center gap-2 text-sm font-black text-[#C9A84C] group-hover:gap-3 transition-all">
+                  Commander maintenant <span className="text-lg">→</span>
+                </div>
+              </Link>
+
+              {/* Haircut Replay */}
+              <Link
+                href="/haircut-replay"
+                className="group bg-[#111111] border border-[#2A2A2A] rounded-2xl p-8 hover:border-[#C9A84C]/40 transition-all flex flex-col"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-3xl mb-5">
+                  🔄
+                </div>
+                <h3 className="text-2xl font-black text-[#F5F0E8] mb-2">Haircut Replay</h3>
+                <p className="text-[#F5F0E8]/40 text-sm leading-relaxed mb-6 flex-1">
+                  Suis tes réductions par semaine et par mois, tes dépenses, ta progression
+                  fidélité. Et si l&apos;attente se prolonge — 3 mini-jeux à portée de doigt.
+                </p>
+                <div className="flex items-center gap-2 text-sm font-black text-[#C9A84C] group-hover:gap-3 transition-all">
+                  Voir mon Replay <span className="text-lg">→</span>
+                </div>
+              </Link>
             </div>
           </div>
         </section>

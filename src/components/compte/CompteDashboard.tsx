@@ -1,6 +1,7 @@
 ﻿"use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { formatFCFA } from "@/lib/utils";
 
 interface Reservation {
@@ -23,65 +24,132 @@ function dateShort(d: string) {
 }
 
 // ── Carte fidélité numérique ──────────────────────────────────
-function CarteFidelite({ total }: { total: number }) {
-  const TAMPONS_PAR_CARTE = 10;
-  const carteNum = Math.floor(total / TAMPONS_PAR_CARTE) + 1;
-  const tamponsRemplis = total % TAMPONS_PAR_CARTE;
-  const offerte = tamponsRemplis === 0 && total > 0;
+function CarteFidelite({ total, clientNom }: { total: number; clientNom: string }) {
+  const TAMPONS = 10;
+  const carteNum = String(Math.floor(total / TAMPONS) + 1).padStart(3, "0");
+  const remplis = total % TAMPONS;
+  const offerte = remplis === 0 && total > 0;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-[#C9A84C]/30 bg-gradient-to-br from-[#1A1100] to-[#0A0A0A] p-6 mb-8"
-      style={{ background: "linear-gradient(135deg, #1A1000 0%, #0F0A00 50%, #0A0A0A 100%)" }}>
+    <div className="mb-8">
+      {/* Carte principale — format paysage */}
+      <div
+        className="relative overflow-hidden rounded-3xl w-full"
+        style={{
+          background: "linear-gradient(135deg, #1C1000 0%, #110900 45%, #0A0800 100%)",
+          border: "1px solid rgba(201,168,76,0.35)",
+          boxShadow: "0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,168,76,0.08), inset 0 1px 0 rgba(255,255,255,0.04)",
+          minHeight: 220,
+        }}
+      >
+        {/* Fond points */}
+        <div className="absolute inset-0 opacity-[0.045]" style={{
+          backgroundImage: "radial-gradient(circle, #C9A84C 1px, transparent 1px)",
+          backgroundSize: "18px 18px",
+        }} />
 
-      {/* Décor fond */}
-      <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: "radial-gradient(circle, #C9A84C 1px, transparent 1px)",
-        backgroundSize: "20px 20px"
-      }} />
-      <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-[#C9A84C]/5 -translate-y-1/2 translate-x-1/2" />
+        {/* Orbe lumière haut-droite */}
+        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(201,168,76,0.13) 0%, transparent 65%)" }} />
+        {/* Orbe bas-gauche */}
+        <div className="absolute -bottom-24 -left-12 w-56 h-56 rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%)" }} />
 
-      <div className="relative z-10">
-        <div className="flex items-start justify-between mb-5">
-          <div>
-            <p className="text-[10px] text-[#C9A84C]/60 tracking-[0.4em] uppercase mb-1">Programme fidélité</p>
-            <h3 className="text-lg font-black text-[#F5F0E8]">Carte n°{carteNum}</h3>
-          </div>
-          <div className="flex items-center gap-1">
-            <span className="text-[#C9A84C] text-2xl">💈</span>
-            <span className="text-xs text-[#F5F0E8]/30 font-semibold">RENOI</span>
-          </div>
+        {/* Ligne diagonale déco */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute w-[200%] h-px bg-gradient-to-r from-transparent via-[#C9A84C]/15 to-transparent"
+            style={{ top: "38%", left: "-50%", transform: "rotate(-8deg)" }} />
         </div>
 
-        {/* Tampons */}
-        <div className="grid grid-cols-5 gap-2 mb-5">
-          {Array.from({ length: TAMPONS_PAR_CARTE }).map((_, i) => {
-            const filled = i < tamponsRemplis;
-            return (
-              <div key={i} className={`aspect-square rounded-xl flex items-center justify-center text-lg transition-all ${
-                filled
-                  ? "bg-[#C9A84C] shadow-lg shadow-[#C9A84C]/30"
-                  : "bg-[#1A1A1A] border border-[#2A2A2A]"
-              }`}>
-                {filled ? "✂️" : <span className="text-[#2A2A2A] text-xs font-bold">{i + 1}</span>}
+        <div className="relative z-10 p-6 flex flex-col" style={{ minHeight: 220 }}>
+
+          {/* ── HAUT : Logo + marque + numéro ── */}
+          <div className="flex items-start justify-between mb-5">
+            <div className="flex items-center gap-3">
+              {/* Logo circulaire */}
+              <div
+                className="relative shrink-0 rounded-full overflow-hidden"
+                style={{
+                  width: 46, height: 46,
+                  border: "2px solid rgba(201,168,76,0.55)",
+                  boxShadow: "0 0 16px rgba(201,168,76,0.28), 0 0 32px rgba(201,168,76,0.10)",
+                }}
+              >
+                <Image src="/images/logo.jpg" alt="RENOI" fill sizes="46px" className="object-cover" />
               </div>
-            );
-          })}
-        </div>
+              {/* Texte marque */}
+              <div className="leading-none">
+                <p className="text-[#C9A84C] font-black text-base tracking-[0.25em] uppercase">RENOI</p>
+                <p className="text-[#F5F0E8]/35 text-[9px] tracking-[0.35em] uppercase mt-0.5">Barberstreet</p>
+              </div>
+            </div>
 
-        {offerte ? (
-          <div className="bg-[#C9A84C] text-[#0A0A0A] rounded-xl px-4 py-3 text-center font-black text-sm">
-            🎉 Votre prochaine coupe est OFFERTE ! Montrez cette carte au salon.
+            {/* Numéro carte haut-droite */}
+            <div className="text-right">
+              <p className="text-[#F5F0E8]/25 text-[9px] tracking-[0.3em] uppercase">Programme</p>
+              <p className="text-[#F5F0E8]/25 text-[9px] tracking-[0.3em] uppercase">Fidélité</p>
+            </div>
           </div>
-        ) : (
-          <div className="flex items-center justify-between">
-            <p className="text-xs text-[#F5F0E8]/30">
-              <span className="text-[#C9A84C] font-black">{tamponsRemplis}</span> / {TAMPONS_PAR_CARTE} coupes
-            </p>
-            <p className="text-xs text-[#F5F0E8]/30">
-              Encore <span className="text-[#C9A84C] font-black">{TAMPONS_PAR_CARTE - tamponsRemplis}</span> pour une coupe offerte
-            </p>
+
+          {/* ── MILIEU : Tampons 5×2 ── */}
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="grid grid-cols-5 gap-2.5 mb-1">
+              {Array.from({ length: TAMPONS }).map((_, i) => {
+                const filled = offerte || i < remplis;
+                return (
+                  <div
+                    key={i}
+                    className="flex items-center justify-center rounded-full transition-all"
+                    style={{
+                      aspectRatio: "1",
+                      background: filled
+                        ? "linear-gradient(145deg, #E2C47A 0%, #C9A84C 50%, #A07830 100%)"
+                        : "rgba(201,168,76,0.07)",
+                      border: filled
+                        ? "1.5px solid rgba(226,196,122,0.7)"
+                        : "1.5px solid rgba(201,168,76,0.18)",
+                      boxShadow: filled
+                        ? "0 0 10px rgba(201,168,76,0.45), inset 0 1px 0 rgba(255,255,255,0.15)"
+                        : "none",
+                    }}
+                  >
+                    {filled ? (
+                      <span style={{ fontSize: 13, color: "#0A0A0A", fontWeight: 900, lineHeight: 1 }}>✂</span>
+                    ) : (
+                      <span style={{ fontSize: 9, color: "rgba(201,168,76,0.22)", fontWeight: 700 }}>{i + 1}</span>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        )}
+
+          {/* ── BAS : Nom + carte n° ── */}
+          <div className="flex items-end justify-between mt-4 pt-3"
+            style={{ borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+            <div>
+              {offerte && (
+                <span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-[10px] font-black px-2 py-0.5 rounded-full mb-1.5 tracking-wide">
+                  🎉 COUPE OFFERTE
+                </span>
+              )}
+              <p className="text-[#F5F0E8]/25 text-[9px] tracking-[0.35em] uppercase mb-0.5">Titulaire</p>
+              <p className="text-[#F5F0E8] font-black text-sm tracking-[0.15em] uppercase">
+                {clientNom}
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="text-[#F5F0E8]/20 text-[9px] tracking-[0.25em] uppercase mb-0.5">Carte</p>
+              <p className="text-[#C9A84C] font-black text-sm tracking-[0.2em]">N° {carteNum}</p>
+              {!offerte && (
+                <p className="text-[#F5F0E8]/25 text-[9px] mt-0.5">
+                  {remplis}/{TAMPONS} · encore {TAMPONS - remplis}
+                </p>
+              )}
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   );
@@ -191,7 +259,7 @@ export default function CompteDashboard({ clientId, clientNom }: { clientId: str
   return (
     <>
       {/* Carte fidélité */}
-      <CarteFidelite total={totalCoupes} />
+      <CarteFidelite total={totalCoupes} clientNom={clientNom} />
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3 mb-8">
