@@ -15,6 +15,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const code = searchParams.get("code");
   if (!code) return Response.json({ error: "Code requis" }, { status: 400 });
+  if (code.length > 20) return Response.json({ error: "Code invalide." }, { status: 400 });
 
   const carte = cartes[code.toUpperCase()];
   if (!carte) return Response.json({ error: "Carte introuvable ou invalide." }, { status: 404 });

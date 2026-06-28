@@ -46,7 +46,10 @@ export async function GET(req: NextRequest) {
   const raw = cookieStore.get("renoi-barbier")?.value;
   if (!raw) return Response.json({ error: "Non autorisé" }, { status: 401 });
 
-  const session = JSON.parse(raw);
+  let session: { prenom: string; salon_nom: string };
+  try { session = JSON.parse(raw); } catch {
+    return Response.json({ error: "Session invalide" }, { status: 401 });
+  }
   const { searchParams } = new URL(req.url);
   const date = searchParams.get("date") || new Date().toISOString().split("T")[0];
 

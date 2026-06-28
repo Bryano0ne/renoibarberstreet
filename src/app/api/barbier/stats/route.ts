@@ -6,7 +6,10 @@ export async function GET(_req: NextRequest) {
   const raw = cookieStore.get("renoi-barbier")?.value;
   if (!raw) return Response.json({ error: "Non autorisé" }, { status: 401 });
 
-  const session = JSON.parse(raw) as { prenom: string };
+  let session: { prenom: string };
+  try { session = JSON.parse(raw); } catch {
+    return Response.json({ error: "Session invalide" }, { status: 401 });
+  }
 
   // Données demo — en prod : requête Supabase filtrée par barbier_id
   const statsParBarbier: Record<string, object> = {

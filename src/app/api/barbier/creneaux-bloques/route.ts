@@ -31,6 +31,13 @@ export async function POST(req: NextRequest) {
   if (!date || !heure_debut || !heure_fin) {
     return Response.json({ error: "Champs manquants." }, { status: 400 });
   }
+  const heureRegex = /^([01]\d|2[0-3]):[0-5]\d$/;
+  if (!heureRegex.test(heure_debut) || !heureRegex.test(heure_fin)) {
+    return Response.json({ error: "Format d'heure invalide (HH:MM)." }, { status: 400 });
+  }
+  if (heure_debut >= heure_fin) {
+    return Response.json({ error: "L'heure de début doit être avant l'heure de fin." }, { status: 400 });
+  }
 
   const key = `${session.id}_${date}`;
   if (!bloques[key]) bloques[key] = [];

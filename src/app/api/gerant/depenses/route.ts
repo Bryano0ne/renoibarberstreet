@@ -35,12 +35,27 @@ export async function POST(req: NextRequest) {
   if (!salon || !categorie || !description || !montant) {
     return Response.json({ error: "Champs manquants." }, { status: 400 });
   }
+  if (!["ZAD", "SAABA"].includes(salon)) {
+    return Response.json({ error: "Salon invalide." }, { status: 400 });
+  }
+  const CATEGORIES_VALIDES = ["Produits", "Matériel", "Électricité", "Loyer", "Salaires", "Autre"];
+  if (!CATEGORIES_VALIDES.includes(categorie)) {
+    return Response.json({ error: "Catégorie invalide." }, { status: 400 });
+  }
+  const montantNum = Number(montant);
+  if (!Number.isFinite(montantNum) || montantNum <= 0 || montantNum > 10_000_000) {
+    return Response.json({ error: "Montant invalide." }, { status: 400 });
+  }
+  if (typeof description !== "string" || description.trim().length < 2 || description.trim().length > 200) {
+    return Response.json({ error: "Description invalide." }, { status: 400 });
+  }
 
   const dep = {
     id: `D${String(depenses.length + 1).padStart(3, "0")}`,
     date: date || new Date().toISOString().split("T")[0],
-    salon, categorie, description,
-    montant: Number(montant),
+    salon, categorie,
+    description: description.trim(),
+    montant: montantNum,
   };
 
   depenses.unshift(dep);
