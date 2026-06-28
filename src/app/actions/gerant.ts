@@ -7,7 +7,8 @@ export async function gerantConnexion(
   formData: FormData
 ): Promise<{ error: string } | never> {
   const password = formData.get("password") as string;
-  const expected = process.env.GERANT_PASSWORD || "renoi2026";
+  const expected = process.env.GERANT_PASSWORD;
+  if (!expected) throw new Error("GERANT_PASSWORD non configuré.");
 
   if (!password || password !== expected) {
     return { error: "Mot de passe incorrect." };
@@ -19,6 +20,7 @@ export async function gerantConnexion(
     path: "/",
     httpOnly: true,
     sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
   });
 
   redirect("/gerant");
