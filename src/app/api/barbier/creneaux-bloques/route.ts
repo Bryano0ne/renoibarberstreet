@@ -7,7 +7,7 @@ async function getSession() {
   const cookieStore = await cookies();
   const raw = cookieStore.get("renoi-barbier")?.value;
   if (!raw) return null;
-  return JSON.parse(raw) as { id: string; prenom: string };
+  try { return JSON.parse(raw) as { id: string; prenom: string }; } catch { return null; }
 }
 
 export async function GET(req: NextRequest) {
@@ -31,12 +31,18 @@ export async function POST(req: NextRequest) {
   if (!date || !heure_debut || !heure_fin) {
     return Response.json({ error: "Champs manquants." }, { status: 400 });
   }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return Response.json({ error: "Format de date invalide (YYYY-MM-DD)." }, { status: 400 });
+  }
   const heureRegex = /^([01]\d|2[0-3]):[0-5]\d$/;
   if (!heureRegex.test(heure_debut) || !heureRegex.test(heure_fin)) {
     return Response.json({ error: "Format d'heure invalide (HH:MM)." }, { status: 400 });
   }
   if (heure_debut >= heure_fin) {
     return Response.json({ error: "L'heure de début doit être avant l'heure de fin." }, { status: 400 });
+  }
+  if (raison && (typeof raison !== "string" || raison.length > 100)) {
+    return Response.json({ error: "Raison invalide (max 100 caractères)." }, { status: 400 });
   }
 
   const key = `${session.id}_${date}`;
