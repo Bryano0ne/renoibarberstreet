@@ -12,6 +12,13 @@ export async function POST(req: NextRequest) {
   if (!reservation_id || !montant || !client_nom || !client_telephone) {
     return Response.json({ error: "Paramètres manquants." }, { status: 400 });
   }
+  const montantNum = Number(montant);
+  if (!Number.isFinite(montantNum) || montantNum < 500 || montantNum > 50_000) {
+    return Response.json({ error: "Montant invalide." }, { status: 400 });
+  }
+  if (typeof client_nom !== "string" || client_nom.trim().length < 2 || client_nom.trim().length > 80) {
+    return Response.json({ error: "Nom client invalide." }, { status: 400 });
+  }
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
   const transaction_id = `TXN-${reservation_id}-${Date.now()}`;

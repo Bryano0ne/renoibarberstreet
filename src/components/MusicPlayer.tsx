@@ -67,17 +67,15 @@ export default function MusicPlayer() {
         aria-hidden="true"
       />
 
-      {/* Bouton mute — visible seulement quand le fichier est prêt */}
-      {ready && (
-        <button
-          onClick={toggle}
-          aria-label={muted ? "Activer la musique" : "Couper la musique"}
-          title={muted ? "Activer la musique" : "Couper la musique"}
-          className="fixed bottom-24 right-4 z-50 flex items-center justify-center w-9 h-9 rounded-full bg-[#0A0A0A]/80 border border-[#C9A84C]/30 backdrop-blur-sm text-base hover:border-[#C9A84C]/70 hover:bg-[#111111] transition-all shadow-lg shadow-black/40 select-none"
-        >
-          {muted ? "🔇" : "🔊"}
-        </button>
-      )}
+      {/* Bouton mute — toujours visible */}
+      <button
+        onClick={toggle}
+        aria-label={muted ? "Activer la musique" : "Couper la musique"}
+        title={muted ? "Activer la musique" : "Couper la musique"}
+        className="fixed bottom-24 right-4 z-50 flex items-center justify-center w-9 h-9 rounded-full bg-[#0A0A0A]/80 border border-[#C9A84C]/30 backdrop-blur-sm text-base hover:border-[#C9A84C]/70 hover:bg-[#111111] transition-all shadow-lg shadow-black/40 select-none"
+      >
+        {muted ? "🔇" : "🔊"}
+      </button>
     </>
   );
 }

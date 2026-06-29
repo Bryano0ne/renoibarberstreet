@@ -1,15 +1,21 @@
 "use server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { createHash, timingSafeEqual } from "crypto";
 import { BARBIERS_DEMO } from "@/lib/demo-data";
 
-// PINs demo — en prod → hachés dans Supabase
-const PINS: Record<string, string> = {
-  "1": "1111", // Moussa
-  "2": "2222", // Ibrahim
-  "3": "3333", // Seydou
-  "4": "4444", // Hamidou
-};
+function getPin(id: string): string {
+  const env = process.env[`BARBIER_PIN_${id}`];
+  if (env) return env;
+  if (process.env.NODE_ENV === "production") return "";
+  return ({ "1": "1111", "2": "2222", "3": "3333", "4": "4444" } as Record<string, string>)[id] || "";
+}
+
+function checkPin(provided: string, expected: string): boolean {
+  const a = createHash("sha256").update(provided).digest();
+  const b = createHash("sha256").update(expected || "\0").digest();
+  return timingSafeEqual(a, b) && !!expected;
+}
 
 export interface BarbierSession {
   id: string;
@@ -33,8 +39,7 @@ export async function barbierConnexion(
   const pin = formData.get("pin") as string;
 
   const barbier = BARBIERS_DEMO.find(b => b.id === id);
-  if (!barbier) return { error: "Barbier introuvable." };
-  if (!pin || PINS[id] !== pin) return { error: "PIN incorrect." };
+  if (!barbier || !pin || !checkPin(pin, getPin(id))) return { error: "Identifiant ou PIN incorrect." };
 
   const session: BarbierSession = {
     id: barbier.id,

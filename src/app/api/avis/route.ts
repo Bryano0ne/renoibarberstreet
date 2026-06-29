@@ -24,8 +24,14 @@ export async function POST(req: NextRequest) {
     } catch {}
   }
 
-  if (!clientNom) {
-    return Response.json({ error: "Prénom requis." }, { status: 400 });
+  if (!clientNom || clientNom.length > 80) {
+    return Response.json({ error: "Prénom requis (max 80 caractères)." }, { status: 400 });
+  }
+  if (commentaire && (typeof commentaire !== "string" || commentaire.length > 500)) {
+    return Response.json({ error: "Commentaire trop long (max 500 caractères)." }, { status: 400 });
+  }
+  if (reservation_id && (typeof reservation_id !== "string" || reservation_id.length > 30)) {
+    return Response.json({ error: "ID réservation invalide." }, { status: 400 });
   }
 
   const avis = {

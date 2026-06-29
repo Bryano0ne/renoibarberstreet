@@ -82,20 +82,13 @@ export default function HomePage() {
               quality={90}
             />
             {/* Calques sombres pour lisibilité du texte */}
-            <div className="absolute inset-0 bg-[#0A0A0A]/65" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-[#0A0A0A]/40" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-transparent to-[#0A0A0A]" />
+            <div className="absolute inset-0 bg-[#0A0A0A]/55" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/15 to-[#0A0A0A]/30" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/50 via-transparent to-[#0A0A0A]" />
           </div>
 
           {/* Contenu */}
           <div className="relative z-10 max-w-4xl mx-auto">
-
-            <div className="animate-fadeinup inline-flex items-center gap-2 bg-[#0A0A0A]/70 border border-[#C9A84C]/30 backdrop-blur-sm rounded-full px-4 py-1.5 mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs text-[#F5F0E8]/70 tracking-widest uppercase">
-                Ouvert · 9h00 – 21h00 · 7j/7
-              </span>
-            </div>
 
             {/* Logo + Nom centré */}
             <div className="animate-fadeinup-delay flex flex-col items-center gap-4 mb-6">

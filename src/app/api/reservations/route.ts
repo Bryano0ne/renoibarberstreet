@@ -8,6 +8,21 @@ export async function POST(req: NextRequest) {
   if (!salon || !prestation_id || !date || !heure || !client_nom || !client_telephone) {
     return Response.json({ error: "Tous les champs sont obligatoires." }, { status: 400 });
   }
+  if (!["ZAD", "SAABA"].includes(salon)) {
+    return Response.json({ error: "Salon invalide." }, { status: 400 });
+  }
+  if (typeof client_nom !== "string" || client_nom.trim().length < 2 || client_nom.trim().length > 80) {
+    return Response.json({ error: "Nom client invalide." }, { status: 400 });
+  }
+  if (typeof client_telephone !== "string" || client_telephone.length < 8 || client_telephone.length > 20) {
+    return Response.json({ error: "Numéro de téléphone invalide." }, { status: 400 });
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return Response.json({ error: "Format de date invalide (YYYY-MM-DD)." }, { status: 400 });
+  }
+  if (!/^\d{2}:\d{2}$/.test(heure)) {
+    return Response.json({ error: "Format d'heure invalide (HH:MM)." }, { status: 400 });
+  }
 
   const prestation = PRESTATIONS_DEMO.find((p) => p.id === prestation_id);
   if (!prestation) {
