@@ -1,0 +1,4 @@
+# Site en présentation privée — indexation désactivée
+# Retirez ce fichier quand le site est prêt à être publié
+User-agent: *
+Disallow: /

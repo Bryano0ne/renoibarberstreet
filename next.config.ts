@@ -2,7 +2,9 @@ import type { NextConfig } from "next";
 // @ts-expect-error no types for next-pwa
 import withPWA from "next-pwa";
 
+// Retirez X-Robots-Tag quand le site est prêt à être indexé par Google
 const securityHeaders = [
+  { key: "X-Robots-Tag", value: "noindex, nofollow" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "X-Content-Type-Options", value: "nosniff" },
