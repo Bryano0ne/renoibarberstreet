@@ -51,7 +51,7 @@ export default function GaleriePage() {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">Nos réalisations</p>
-          <h1 className="text-5xl font-black text-[#F5F0E8] mb-4">
+          <h1 className="text-4xl sm:text-5xl font-black text-[#F5F0E8] mb-4">
             La <span className="text-[#C9A84C]">Galerie</span>
           </h1>
           <p className="text-[#F5F0E8]/50 max-w-xl mx-auto">

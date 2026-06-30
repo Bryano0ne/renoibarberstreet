@@ -106,7 +106,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <h1 className="animate-fadeinup-delay text-6xl md:text-8xl font-black tracking-tight text-[#F5F0E8] leading-none mb-4 drop-shadow-2xl">
+            <h1 className="animate-fadeinup-delay text-5xl sm:text-6xl md:text-8xl font-black tracking-tight text-[#F5F0E8] leading-none mb-4 drop-shadow-2xl">
               RENOI<br />
               <span className="text-[#C9A84C]">BARBERSTREET</span>
             </h1>
@@ -157,7 +157,7 @@ export default function HomePage() {
               { value: "4.9 ⭐", label: "Note moyenne" },
             ].map((item) => (
               <div key={item.label} className="group">
-                <div className="text-4xl md:text-5xl font-black text-[#C9A84C] group-hover:scale-110 transition-transform">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#C9A84C] group-hover:scale-110 transition-transform">
                   {item.value}
                 </div>
                 <div className="text-xs text-[#F5F0E8]/40 mt-2 uppercase tracking-widest">{item.label}</div>
@@ -171,7 +171,7 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">Nos services</p>
-              <h2 className="text-4xl font-black text-[#F5F0E8]">
+              <h2 className="text-3xl sm:text-4xl font-black text-[#F5F0E8]">
                 Coupes & <span className="text-[#C9A84C]">Prestations</span>
               </h2>
             </div>
@@ -236,7 +236,7 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">Nos artistes</p>
-              <h2 className="text-4xl font-black text-[#F5F0E8]">
+              <h2 className="text-3xl sm:text-4xl font-black text-[#F5F0E8]">
                 Notre <span className="text-[#C9A84C]">Équipe</span>
               </h2>
             </div>
@@ -281,7 +281,7 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">Nos réalisations</p>
-              <h2 className="text-4xl font-black text-[#F5F0E8]">
+              <h2 className="text-3xl sm:text-4xl font-black text-[#F5F0E8]">
                 La <span className="text-[#C9A84C]">Galerie</span>
               </h2>
             </div>
@@ -326,7 +326,7 @@ export default function HomePage() {
               <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">
                 Pendant ton passage
               </p>
-              <h2 className="text-4xl font-black text-[#F5F0E8]">
+              <h2 className="text-3xl sm:text-4xl font-black text-[#F5F0E8]">
                 L&apos;<span className="text-[#C9A84C]">Expérience</span> RENOI
               </h2>
               <p className="text-[#F5F0E8]/30 text-sm mt-3">
@@ -379,7 +379,7 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">Ils nous font confiance</p>
-              <h2 className="text-4xl font-black text-[#F5F0E8]">
+              <h2 className="text-3xl sm:text-4xl font-black text-[#F5F0E8]">
                 Avis <span className="text-[#C9A84C]">Clients</span>
               </h2>
               <p className="text-[#F5F0E8]/40 mt-3">⭐⭐⭐⭐⭐ — 4.9 / 5 · 200+ avis</p>
@@ -428,7 +428,7 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-3">Où nous trouver</p>
-              <h2 className="text-4xl font-black text-[#F5F0E8]">
+              <h2 className="text-3xl sm:text-4xl font-black text-[#F5F0E8]">
                 Nos <span className="text-[#C9A84C]">Salons</span>
               </h2>
             </div>
@@ -471,7 +471,7 @@ export default function HomePage() {
         {/* ── CTA FINAL ── */}
         <section className="py-24 px-6 border-t border-[#2A2A2A] text-center bg-gradient-to-b from-[#0A0A0A] to-[#0d0800]">
           <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-4">Prêt ?</p>
-          <h2 className="text-4xl md:text-5xl font-black text-[#F5F0E8] mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#F5F0E8] mb-4">
             Réserve ta prochaine coupe
           </h2>
           <p className="text-[#F5F0E8]/40 mb-10 max-w-md mx-auto">
@@ -479,7 +479,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/reserver"
-            className="inline-block bg-[#C9A84C] text-[#0A0A0A] font-black px-12 py-5 rounded-full text-xl hover:bg-[#E2C47A] transition-all hover:scale-105 shadow-2xl shadow-[#C9A84C]/20"
+            className="inline-block bg-[#C9A84C] text-[#0A0A0A] font-black px-8 sm:px-12 py-4 sm:py-5 rounded-full text-lg sm:text-xl hover:bg-[#E2C47A] transition-all hover:scale-105 shadow-2xl shadow-[#C9A84C]/20"
           >
             Réserver maintenant 💈
           </Link>
