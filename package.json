@@ -23,6 +23,9 @@
     "tailwind-merge": "^3.6.0",
     "zod": "^4.4.3"
   },
+  "overrides": {
+    "serialize-javascript": "^7.0.3"
+  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
